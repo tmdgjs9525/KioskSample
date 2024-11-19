@@ -1,0 +1,16 @@
+﻿<Application
+    x:Class="KioskSample.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:KioskSample.Core;assembly=KioskSample.Core"
+    xmlns:local="clr-namespace:KioskSample">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/KioskSample;component/Resources/Colors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <local:ViewLocator x:Key="ViewLocator" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
