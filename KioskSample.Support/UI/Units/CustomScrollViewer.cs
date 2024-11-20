@@ -7,6 +7,18 @@ namespace KioskSample.Support.UI.Units
 {
     public class CustomScrollViewer : ScrollViewer
     {
+        public Brush ScrollBackGround
+        {
+            get { return (Brush)GetValue(ScrollBackGroundProperty); }
+            set { SetValue(ScrollBackGroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ScrollBackGround.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ScrollBackGroundProperty =
+            DependencyProperty.Register("ScrollBackGround", typeof(Brush), typeof(CustomScrollViewer), new PropertyMetadata(Brushes.Transparent));
+
+
+
         private double _velocity = 0.0;
         private const double _acceleration = 0.001;
         private const double _deceleration = 0.002;
@@ -24,7 +36,7 @@ namespace KioskSample.Support.UI.Units
             // 가속도 및 감속도 모델 적용
             CompositionTarget.Rendering += ApplyAccelerationAndDeceleration;
         }
-        private void ApplyAccelerationAndDeceleration(object sender, EventArgs e)
+        private void ApplyAccelerationAndDeceleration(object? sender, EventArgs e)
         {
             // 속도 적용
             _velocity += _velocity > 0 ? -_acceleration : _acceleration;

@@ -11,6 +11,8 @@ namespace KioskSample.Services
     {
         Task<DishMenu?> GetByIdAsync(int id);
 
+        Task<List<DishMenu>> GetByCateogryAsync(string category);
+
         List<string> GetAllCategories();
 
         IEnumerable<DishMenu> GetAll();

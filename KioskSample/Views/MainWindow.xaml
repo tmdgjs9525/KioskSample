@@ -29,7 +29,7 @@
         <ItemsControl Grid.Row="1" ItemsSource="{Binding Categories}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <mainUnits:CategoryButton Command="{Binding CateogryCommand}" CommandParameter="{Binding .}" Margin="0,50,0,0"/>
+                    <mainUnits:CategoryButton Command="{Binding DataContext.CategoryCommand,RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding .}" Margin="0,50,0,0"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

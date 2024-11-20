@@ -3,12 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:units="clr-namespace:KioskSample.Support.UI.Units">
     <Style TargetType="{x:Type units:CustomScrollViewer}">
-        <Setter Property="Background" Value="#262b32" />
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type units:CustomScrollViewer}">
-                    <Grid Background="{TemplateBinding Background}">
+                    <Grid Background="{TemplateBinding ScrollBackGround}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30*"/>
                             <ColumnDefinition Width="*"/>

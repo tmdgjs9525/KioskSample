@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using KioskSample.Core;
+using KioskSample.Events;
 using KioskSample.Services;
 using System;
 using System.Collections.Generic;
@@ -31,9 +33,9 @@ namespace KioskSample.ViewModels
         }
 
         [RelayCommand]
-        private void Cateogry()
+        private void Category(string cateogry)
         {
-
+            WeakReferenceMessenger.Default.Send(new CategoryChagned(cateogry));
         }
     }
 }

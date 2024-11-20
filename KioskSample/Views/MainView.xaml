@@ -6,20 +6,23 @@
     xmlns:local="clr-namespace:KioskSample.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mainUnits="clr-namespace:KioskSample.Main.UI.Units;assembly=KioskSample.Main"
+    xmlns:support="clr-namespace:KioskSample.Support.UI.Units;assembly=KioskSample.Support"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
-    <ItemsControl ItemsSource="{Binding Items}" HorizontalAlignment="Center" >
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <WrapPanel Orientation="Horizontal"/>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <mainUnits:DishItem Margin="60,20,0,0"/>
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
+    <support:CustomScrollViewer ScrollBackGround="#262b32">
+        <ItemsControl ItemsSource="{Binding Items}" HorizontalAlignment="Center" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <mainUnits:DishItem Margin="60,20,0,0"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </support:CustomScrollViewer>
+    
 </UserControl>

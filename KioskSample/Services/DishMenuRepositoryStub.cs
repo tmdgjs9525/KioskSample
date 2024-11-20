@@ -74,6 +74,18 @@ namespace KioskSample.Services
             return new List<string>() {"전체", "메인 메뉴", "사이드", "음료" };
         }
 
+        public Task<List<DishMenu>> GetByCateogryAsync(string category)
+        {
+            if (category == "전체")
+            {
+                return Task.FromResult(_dishMenuList);
+            }
+
+            //인터페이스 수정 없이 반환
+            var result = _dishMenuList.Where(d => d.Category == category).ToList();
+            return Task.FromResult(result);
+        }
+
         public Task<DishMenu?> GetByIdAsync(int id)
         {
             throw new NotImplementedException();

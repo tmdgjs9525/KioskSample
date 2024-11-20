@@ -3,7 +3,6 @@
         <ResourceDictionary Source="/KioskSample.Support;component/Themes/Units/CustomScrollViewer.xaml" />
         <ResourceDictionary Source="/KioskSample.Support;component/Themes/Units/CustomScrollBar.xaml" />
         <ResourceDictionary Source="/KioskSample.Support;component/Themes/Units/CustomToolTip.xaml" />
-        <ResourceDictionary Source="/KioskSample.Support;component/Themes/Units/UserIcon.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
