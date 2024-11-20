@@ -1,0 +1,24 @@
+﻿<Window x:Class="KioskSample.Core.Views.PopupVIew"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KioskSample.Core.Views"
+        xmlns:core="clr-namespace:KioskSample.Core"
+        mc:Ignorable="d"
+        Title="PopupVIew" Height="450" Width="800">
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+         CaptionHeight="30" 
+         ResizeBorderThickness="5" 
+         GlassFrameThickness="0"
+         UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <ContentControl Content="{Binding PopupVM ,Mode=OneWay}">
+            <ContentControl.ContentTemplateSelector>
+                <core:ViewLocator />
+            </ContentControl.ContentTemplateSelector>
+        </ContentControl>
+    </Grid>
+</Window>

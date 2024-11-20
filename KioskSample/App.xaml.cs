@@ -1,5 +1,8 @@
-﻿using KioskSample.Services;
+﻿using KioskSample.Core.Services;
+using KioskSample.Core.Views;
+using KioskSample.Services;
 using KioskSample.ViewModels;
+using KioskSample.ViewModels.Dialog;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
@@ -39,8 +42,16 @@ namespace KioskSample
         {
             var services = new ServiceCollection();
 
+            services.AddSingleton<IDialogService, DialogService>();
+
             //더미데이터 반환용 클래스
             services.AddSingleton<IDishMenuRepository, DishMenuRepositoryStub>();
+
+            services.AddTransient<PopupVIew>();
+
+            services.AddTransient<TestDialogViewModel>();
+
+            services.AddTransient<PayDialogViewModel>();
 
             services.AddTransient<MainWindowViewModel>();
 

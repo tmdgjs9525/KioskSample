@@ -38,5 +38,8 @@
             Grid.Row="1"
             Grid.Column="1"
             Content="{Binding CurrentViewModel}" />
+
+        <Button Content="결제하기" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                Command="{Binding PayCommand}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

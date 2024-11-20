@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
-using KioskSample.Core;
 using KioskSample.Core.Models;
+using KioskSample.Core.ViewModels;
 using KioskSample.Events;
 using KioskSample.Models;
 using KioskSample.Services;

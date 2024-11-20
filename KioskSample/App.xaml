@@ -15,6 +15,7 @@
             <Style TargetType="ContentControl">
                 <Setter Property="ContentTemplateSelector" Value="{StaticResource ViewLocator}"/>
             </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
