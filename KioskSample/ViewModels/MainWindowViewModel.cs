@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using KioskSample.Core;
+using KioskSample.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +12,28 @@ namespace KioskSample.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        [ObservableProperty]
-        private ViewModelBase _currentViewModel;
+        #region fields
+        private readonly IDishMenuRepository _dishMenuRepository;
+        #endregion
 
-        public MainWindowViewModel()
+        #region property
+        [ObservableProperty]
+        private ViewModelBase? _currentViewModel;
+
+        [ObservableProperty]
+        private List<string> _categories = new();
+        #endregion
+        public MainWindowViewModel(IDishMenuRepository dishMenuRepository)
         {
-            
+            _dishMenuRepository = dishMenuRepository;
+
+            Categories = _dishMenuRepository.GetAllCategories();
+        }
+
+        [RelayCommand]
+        private void Cateogry()
+        {
+
         }
     }
 }

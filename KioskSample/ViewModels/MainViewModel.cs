@@ -1,25 +1,27 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using KioskSample.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using KioskSample.Core.Models;
+using KioskSample.Models;
+using KioskSample.Services;
 
 namespace KioskSample.ViewModels
 {
     public partial class MainViewModel : ViewModelBase
     {
-        [ObservableProperty]
-        private List<string> _items = new();
-        public MainViewModel()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                Items.Add(i.ToString());
-            }
-            
+        #region fields
+        private readonly IDishMenuRepository _dishMenuRepository;
+        #endregion
 
+        #region property
+        [ObservableProperty]
+        private List<DishMenu> _items = new();
+        #endregion
+
+        public MainViewModel(IDishMenuRepository dishMenuRepository)
+        {
+            _dishMenuRepository = dishMenuRepository;
+
+            Items = _dishMenuRepository.GetAll().ToList();
         }
     }
 }

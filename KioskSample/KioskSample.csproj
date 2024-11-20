@@ -14,12 +14,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KioskSample.Core\KioskSample.Core.csproj" />
+    <ProjectReference Include="..\KioskSample.Main\KioskSample.Main.csproj" />
+    <ProjectReference Include="..\KioskSample.Support\KioskSample.Support.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Update="Resources\Colors.xaml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Units\" />
   </ItemGroup>
 
 </Project>

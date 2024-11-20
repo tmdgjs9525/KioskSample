@@ -1,4 +1,5 @@
-﻿using KioskSample.ViewModels;
+﻿using KioskSample.Services;
+using KioskSample.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
@@ -37,6 +38,9 @@ namespace KioskSample
         private static IServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
+
+            //더미데이터 반환용 클래스
+            services.AddSingleton<IDishMenuRepository, DishMenuRepositoryStub>();
 
             services.AddTransient<MainWindowViewModel>();
 

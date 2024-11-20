@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:KioskSample"
+    xmlns:mainUnits="clr-namespace:KioskSample.Main.UI.Units;assembly=KioskSample.Main"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="960"
@@ -22,10 +23,20 @@
             <ColumnDefinition Width="8*" />
         </Grid.ColumnDefinitions>
 
+        <Border Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1"/>
+        <Border Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="1"/>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Categories}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <mainUnits:CategoryButton Command="{Binding CateogryCommand}" CommandParameter="{Binding .}" Margin="0,50,0,0"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
         <ContentControl
             Grid.Row="1"
             Grid.Column="1"
-            Content="{Binding CurrentViewModel}"
-            ContentTemplateSelector="{DynamicResource ViewLocator}" />
+            Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

@@ -1,0 +1,12 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="/KioskSample.Main;component/Themes/Units/DishItem.xaml" />
+        <ResourceDictionary Source="/KioskSample.Main;component/Themes/Units/CategoryButton.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+
+
+</ResourceDictionary>
+
