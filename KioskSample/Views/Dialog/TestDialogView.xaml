@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Content="TestDialogView" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Width="150" Height="70" Background="White" Command="{Binding ExitCommand}" Content="TestDialogView" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

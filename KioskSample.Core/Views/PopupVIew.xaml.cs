@@ -1,5 +1,6 @@
 ﻿using KioskSample.Core.Services;
 using KioskSample.Core.ViewModels;
+using KioskSample;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +20,15 @@ namespace KioskSample.Core.Views
     /// <summary>
     /// Interaction logic for PopupVIew.xaml
     /// </summary>
-    public partial class PopupVIew : Window , IDialog
+    public partial class PopupView : Window , IDialog
     {
-        public PopupVIew()
+        public PopupView()
         {
             InitializeComponent();
 
             DataContext = new PopupViewModel();
+            
         }
+
     }
 }

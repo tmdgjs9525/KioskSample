@@ -7,8 +7,8 @@
     xmlns:mainUnits="clr-namespace:KioskSample.Main.UI.Units;assembly=KioskSample.Main"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="960"
-    Height="680"
+    Width="1200"
+    Height="960"
     Background="{StaticResource MainBackGroundBrush}"
     mc:Ignorable="d">
 
@@ -20,7 +20,8 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="8*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
         <Border Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1"/>
@@ -36,10 +37,10 @@
         
         <ContentControl
             Grid.Row="1"
-            Grid.Column="1"
+            Grid.Column="1" 
             Content="{Binding CurrentViewModel}" />
 
         <Button Content="결제하기" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                Command="{Binding PayCommand}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right"/>
+                Command="{Binding PayCommand}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

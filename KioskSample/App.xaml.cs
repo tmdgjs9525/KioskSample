@@ -46,8 +46,9 @@ namespace KioskSample
 
             //더미데이터 반환용 클래스
             services.AddSingleton<IDishMenuRepository, DishMenuRepositoryStub>();
+            //services.AddSingleton<IDishMenuRepository, DIshMenuRepository>();
 
-            services.AddTransient<PopupVIew>();
+            services.AddTransient<PopupView>();
 
             services.AddTransient<TestDialogViewModel>();
 

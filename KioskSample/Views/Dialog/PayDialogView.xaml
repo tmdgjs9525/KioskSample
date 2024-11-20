@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:KioskSample.Views.Dialog"
         mc:Ignorable="d" 
         >
-    <StackPanel Orientation="Horizontal">
-        <Label Content="test" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Command="{Binding NextCommand}" Width="150" Height="50"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Label Content="PayDialogView" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="Next" Command="{Binding NextCommand}" Width="150" Height="50"/>
     </StackPanel>
 </UserControl>

@@ -26,7 +26,7 @@ namespace KioskSample.Core.Services
         {
             _serviceProvider = serviceProvider;
 
-            _popWindow = _serviceProvider.GetRequiredService<PopupVIew>() as IDialog;
+            _popWindow = _serviceProvider.GetRequiredService<PopupView>() as IDialog;
         }
 
         public IDialog Dialog => _popWindow;

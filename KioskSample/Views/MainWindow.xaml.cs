@@ -20,5 +20,10 @@ namespace KioskSample
         {
             InitializeComponent();
         }
+
+        public static MainWindow GetMainWindow()
+        {
+            return Application.Current.Windows.OfType<MainWindow>().First();
+        }
     }
 }
