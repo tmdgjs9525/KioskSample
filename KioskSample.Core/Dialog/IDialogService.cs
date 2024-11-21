@@ -14,8 +14,8 @@ namespace KioskSample.Core.Services
     {
         IDialog Dialog { get; }
 
-        IDialog ShowDialog(ViewModelBase vm, DialogParameters? parameters = null);
-        IDialog ChangeDialog(ViewModelBase vm, DialogParameters? parameters = null);
+        IDialog ShowDialog<TViewModel>(DialogParameters? parameters = null) where TViewModel : ViewModelBase;
+        IDialog ChangeDialog<TViewModel>(DialogParameters? parameters = null) where TViewModel : ViewModelBase;
 
         void CloseDialog();
     }
@@ -35,9 +35,9 @@ namespace KioskSample.Core.Services
 
         public IDialog Dialog => _popWindow;
 
-        public IDialog ShowDialog(ViewModelBase vm, DialogParameters? parameters = null)
+        public IDialog ShowDialog<TViewModel>(DialogParameters? parameters = null) where TViewModel : ViewModelBase
         {
-            SetVM(vm, parameters);
+            SetVM<TViewModel>(parameters);
 
             _popWindow.ShowDialog();
 
@@ -46,9 +46,9 @@ namespace KioskSample.Core.Services
 
      
 
-        public IDialog ChangeDialog(ViewModelBase vm, DialogParameters? parameters = null)
+        public IDialog ChangeDialog<TViewModel>(DialogParameters? parameters = null) where TViewModel : ViewModelBase
         {
-            SetVM(vm, parameters);
+            SetVM<TViewModel>(parameters);
 
             return _popWindow;
         }
@@ -58,11 +58,11 @@ namespace KioskSample.Core.Services
             _popWindow.CloseDialog();
         }
 
-        private void SetVM(ViewModelBase vm, DialogParameters? parameters)
+        private void SetVM<TViewModel>(DialogParameters? parameters) where TViewModel : ViewModelBase
         {
             if (_popWindow.DataContext is PopupViewModel viewModel)
             {
-                viewModel.PopupVM = vm;
+                viewModel.PopupVM = _serviceProvider.GetRequiredService<TViewModel>();
                 if (viewModel.PopupVM is IDialogAware dialog)
                 {
                     dialog.OnDialogOpened(parameters ?? new());
