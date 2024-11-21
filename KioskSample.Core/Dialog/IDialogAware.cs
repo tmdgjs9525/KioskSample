@@ -9,6 +9,7 @@ namespace KioskSample.Core.Dialog
     public interface IDialogAware
     {
         void OnDialogOpened(DialogParameters parameters);
+
         event Action<DialogResult> RequestClose;
     }
 }

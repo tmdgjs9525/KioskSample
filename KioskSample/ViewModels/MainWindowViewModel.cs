@@ -64,9 +64,9 @@ namespace KioskSample.ViewModels
 
             dialogParameters.Add("SelectedMenu", SelectedDish);
 
-            _dialogService.SetVM(_serviceProvider.GetRequiredService<PayDialogViewModel>(), dialogParameters);
+            var vm = _serviceProvider.GetRequiredService<PayDialogViewModel>();
 
-            _dialogService.Dialog.ShowDialog();
+            _dialogService.ShowDialog(vm, dialogParameters);
         }
     }
 }

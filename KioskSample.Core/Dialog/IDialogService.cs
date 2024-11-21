@@ -14,7 +14,10 @@ namespace KioskSample.Core.Services
     {
         IDialog Dialog { get; }
 
-        void SetVM(ViewModelBase vm, DialogParameters? parameters = null);
+        IDialog ShowDialog(ViewModelBase vm, DialogParameters? parameters = null);
+        IDialog ChangeDialog(ViewModelBase vm, DialogParameters? parameters = null);
+
+        void CloseDialog();
     }
 
     public class DialogService : IDialogService
@@ -32,7 +35,30 @@ namespace KioskSample.Core.Services
 
         public IDialog Dialog => _popWindow;
 
-        public void SetVM(ViewModelBase vm, DialogParameters? parameters = null)
+        public IDialog ShowDialog(ViewModelBase vm, DialogParameters? parameters = null)
+        {
+            SetVM(vm, parameters);
+
+            _popWindow.ShowDialog();
+
+            return _popWindow;
+        }
+
+     
+
+        public IDialog ChangeDialog(ViewModelBase vm, DialogParameters? parameters = null)
+        {
+            SetVM(vm, parameters);
+
+            return _popWindow;
+        }
+
+        public void CloseDialog()
+        {
+            _popWindow.CloseDialog();
+        }
+
+        private void SetVM(ViewModelBase vm, DialogParameters? parameters)
         {
             if (_popWindow.DataContext is PopupViewModel viewModel)
             {
@@ -40,6 +66,10 @@ namespace KioskSample.Core.Services
                 if (viewModel.PopupVM is IDialogAware dialog)
                 {
                     dialog.OnDialogOpened(parameters ?? new());
+                    dialog.RequestClose += result =>
+                    {
+                        CloseDialog();
+                    };
                 }
             }
         }

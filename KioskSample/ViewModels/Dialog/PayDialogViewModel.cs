@@ -29,7 +29,7 @@ namespace KioskSample.ViewModels.Dialog
         [RelayCommand]
         private void Next()
         {
-            _dialogService.SetVM(_serviceProvider.GetRequiredService<TestDialogViewModel>());
+            _dialogService.ChangeDialog(_serviceProvider.GetRequiredService<TestDialogViewModel>());
         }
 
         public void OnDialogOpened(DialogParameters parameters)

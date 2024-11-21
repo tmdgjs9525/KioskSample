@@ -31,11 +31,9 @@ namespace KioskSample.Core.Views
             
         }
 
-        public event Action<DialogResult>? RequestClose;
-
-        public void OnDialogOpened(DialogParameters? parameters = null)
+        public void CloseDialog()
         {
-            throw new NotImplementedException();
+            Hide();
         }
     }
 }

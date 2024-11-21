@@ -15,7 +15,8 @@ namespace KioskSample.Core.Services
 
         bool? ShowDialog();
 
-        void Close();
+        void CloseDialog();
+
     }
 
     public interface IDialogParameters
