@@ -15,7 +15,8 @@ namespace KioskSample.Support.UI.Units
 
         // Using a DependencyProperty as the backing store for ScrollBackGround.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ScrollBackGroundProperty =
-            DependencyProperty.Register("ScrollBackGround", typeof(Brush), typeof(CustomScrollViewer), new PropertyMetadata(Brushes.Transparent));
+            DependencyProperty.Register("ScrollBackGround", typeof(Brush), typeof(CustomScrollViewer), 
+                new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#262b32"))));
 
 
 

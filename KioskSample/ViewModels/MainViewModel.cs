@@ -5,6 +5,7 @@ using KioskSample.Core.ViewModels;
 using KioskSample.Events;
 using KioskSample.Models;
 using KioskSample.Services;
+using System.Collections.ObjectModel;
 
 namespace KioskSample.ViewModels
 {
@@ -13,14 +14,14 @@ namespace KioskSample.ViewModels
         private readonly IDishMenuRepository _dishMenuRepository;
 
         [ObservableProperty]
-        private List<DishMenu> _items = new();
+        private ObservableCollection<DishMenu> _dishMenus ;
 
 
         public MainViewModel(IDishMenuRepository dishMenuRepository)
         {
             _dishMenuRepository = dishMenuRepository;
 
-            Items = _dishMenuRepository.GetAll().ToList();
+            DishMenus = new ObservableCollection<DishMenu>(_dishMenuRepository.GetAll()); 
 
             RegisterEvent();
         }
@@ -29,7 +30,7 @@ namespace KioskSample.ViewModels
         {
             WeakReferenceMessenger.Default.Register<CategoryChagned>(this, async(r, m) =>
             {
-                Items = await _dishMenuRepository.GetByCateogryAsync(m.Value);
+                DishMenus = new ObservableCollection<DishMenu>(await _dishMenuRepository.GetByCateogryAsync(m.Value));
             });
         }
     }

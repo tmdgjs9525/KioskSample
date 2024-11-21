@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KioskSample.Core\KioskSample.Core.csproj" />
+    <ProjectReference Include="..\KioskSample.Support\KioskSample.Support.csproj" />
   </ItemGroup>
 
   <ItemGroup>

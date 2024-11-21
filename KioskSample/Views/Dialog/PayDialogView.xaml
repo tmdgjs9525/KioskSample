@@ -7,13 +7,20 @@
         xmlns:local="clr-namespace:KioskSample.Views.Dialog"
         mc:Ignorable="d" 
         >
-    <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        
+        <mainUnits:DishItems HorizontalAlignment="Center" ItemsSource="{Binding DishMenus}" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Label Content="PayDialogView" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button Content="Next" Command="{Binding NextCommand}" Width="150" Height="50"/>
-
         </StackPanel>
-        <mainUnits:DishItems ItemsSource="{Binding DishMenus}" />
-    </StackPanel>
+    </Grid>
+        
+   
    
 </UserControl>
