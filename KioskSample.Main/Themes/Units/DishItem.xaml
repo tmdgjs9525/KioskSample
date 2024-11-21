@@ -4,7 +4,7 @@
     xmlns:units="clr-namespace:KioskSample.Main.UI.Units">
     
     <Style TargetType="{x:Type units:DishItem}">
-        <Setter Property="Background" Value="#696773" />
+        <Setter Property="Background" Value="{DynamicResource MainItemColorBrush}" />
         <Setter Property="Width" Value="150"/>
         <Setter Property="IsChecked" Value="{Binding IsChecked}"/>
         <Setter Property="Height" Value="150"/>
@@ -16,7 +16,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type units:DishItem}">
                     <Border
-                          Background="{DynamicResource MainItemColorBrush}"
+                          Background="{TemplateBinding Background}"
                           BorderBrush="Gray"
                           CornerRadius="6">
                         <Grid>
@@ -33,6 +33,11 @@
                         </Grid>
 
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource MainItemSelectedColorBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

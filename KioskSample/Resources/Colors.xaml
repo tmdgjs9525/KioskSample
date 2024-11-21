@@ -3,11 +3,14 @@
     <Color x:Key="MainBackGround">#424242</Color>
 
     <Color x:Key="MainItemColor">#1C1C1C</Color>
+    <Color x:Key="MainItemSelectedColor">#2C2C2C</Color>
 
 
     <SolidColorBrush x:Key="MainBackGroundBrush" Color="{StaticResource MainBackGround}" />
 
     <SolidColorBrush x:Key="MainItemColorBrush" Color="{StaticResource MainItemColor}" />
+
+    <SolidColorBrush x:Key="MainItemSelectedColorBrush" Color="{StaticResource MainItemSelectedColor}" />
 
 
 </ResourceDictionary>
