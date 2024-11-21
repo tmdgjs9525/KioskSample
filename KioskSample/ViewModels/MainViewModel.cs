@@ -15,14 +15,14 @@ namespace KioskSample.ViewModels
         private readonly IDishMenuRepository _dishMenuRepository;
 
         [ObservableProperty]
-        private ObservableCollection<DishMenu> _dishMenus ;
+        private ObservableCollection<DishMenu> _dishes ;
 
 
         public MainViewModel(IDishMenuRepository dishMenuRepository)
         {
             _dishMenuRepository = dishMenuRepository;
 
-            DishMenus = new ObservableCollection<DishMenu>(_dishMenuRepository.GetAll()); 
+            Dishes = new ObservableCollection<DishMenu>(_dishMenuRepository.GetAll()); 
 
             RegisterEvent();
         }
@@ -31,7 +31,7 @@ namespace KioskSample.ViewModels
         {
             WeakReferenceMessenger.Default.Register<CategoryChagned>(this, async(r, m) =>
             {
-                DishMenus = new ObservableCollection<DishMenu>(await _dishMenuRepository.GetByCateogryAsync(m.Value));
+                Dishes = new ObservableCollection<DishMenu>(await _dishMenuRepository.GetByCateogryAsync(m.Value));
             });
         }
 

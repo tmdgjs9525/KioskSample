@@ -12,7 +12,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <mainUnits:DishItems ItemsSource="{Binding DishMenus}" ButtonCommand="{Binding SelectDishCommand}"/>
+        <mainUnits:DishItems ItemsSource="{Binding Dishes}" ButtonCommand="{Binding SelectDishCommand}"/>
 
     </Grid>
 
