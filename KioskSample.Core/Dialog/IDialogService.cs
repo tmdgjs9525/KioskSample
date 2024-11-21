@@ -1,4 +1,5 @@
-﻿using KioskSample.Core.ViewModels;
+﻿using KioskSample.Core.Dialog;
+using KioskSample.Core.ViewModels;
 using KioskSample.Core.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -13,7 +14,7 @@ namespace KioskSample.Core.Services
     {
         IDialog Dialog { get; }
 
-        void SetVM(ViewModelBase vm);
+        void SetVM(ViewModelBase vm, DialogParameters? parameters = null);
     }
 
     public class DialogService : IDialogService
@@ -31,11 +32,15 @@ namespace KioskSample.Core.Services
 
         public IDialog Dialog => _popWindow;
 
-        public void SetVM(ViewModelBase vm)
+        public void SetVM(ViewModelBase vm, DialogParameters? parameters = null)
         {
             if (_popWindow.DataContext is PopupViewModel viewModel)
             {
                 viewModel.PopupVM = vm;
+                if (viewModel.PopupVM is IDialogAware dialog)
+                {
+                    dialog.OnDialogOpened(parameters ?? new());
+                }
             }
         }
     }

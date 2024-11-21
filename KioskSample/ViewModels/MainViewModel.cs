@@ -10,14 +10,11 @@ namespace KioskSample.ViewModels
 {
     public partial class MainViewModel : ViewModelBase
     {
-        #region fields
         private readonly IDishMenuRepository _dishMenuRepository;
-        #endregion
 
-        #region property
         [ObservableProperty]
         private List<DishMenu> _items = new();
-        #endregion
+
 
         public MainViewModel(IDishMenuRepository dishMenuRepository)
         {

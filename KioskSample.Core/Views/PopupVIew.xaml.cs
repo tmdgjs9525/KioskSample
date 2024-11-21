@@ -14,13 +14,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using KioskSample.Core.Dialog;
 
 namespace KioskSample.Core.Views
 {
     /// <summary>
     /// Interaction logic for PopupVIew.xaml
     /// </summary>
-    public partial class PopupView : Window , IDialog
+    public partial class PopupView : Window, IDialog
     {
         public PopupView()
         {
@@ -30,5 +31,11 @@ namespace KioskSample.Core.Views
             
         }
 
+        public event Action<DialogResult>? RequestClose;
+
+        public void OnDialogOpened(DialogParameters? parameters = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

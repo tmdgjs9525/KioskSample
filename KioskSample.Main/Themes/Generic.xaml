@@ -2,6 +2,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <ResourceDictionary Source="/KioskSample.Main;component/Themes/Units/DishItem.xaml" />
+        <ResourceDictionary Source="/KioskSample.Main;component/Themes/Units/DishItems.xaml" />
         <ResourceDictionary Source="/KioskSample.Main;component/Themes/Units/CategoryButton.xaml" />
 
     </ResourceDictionary.MergedDictionaries>

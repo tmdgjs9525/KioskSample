@@ -11,4 +11,10 @@
     <ProjectReference Include="..\KioskSample.Core\KioskSample.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Themes\Units\DishItems.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

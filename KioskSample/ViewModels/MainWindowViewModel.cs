@@ -1,14 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using KioskSample.Core.Dialog;
 using KioskSample.Core.Services;
 using KioskSample.Core.ViewModels;
 using KioskSample.Events;
+using KioskSample.Models;
 using KioskSample.Services;
 using KioskSample.ViewModels.Dialog;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,19 +20,19 @@ namespace KioskSample.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        #region fields
         private readonly IDishMenuRepository _dishMenuRepository;
         private readonly IDialogService _dialogService;
         private readonly IServiceProvider _serviceProvider;
-        #endregion
 
-        #region property
         [ObservableProperty]
         private ViewModelBase? _currentViewModel;
 
         [ObservableProperty]
         private List<string> _categories = new();
-        #endregion
+
+        [ObservableProperty]
+        private ObservableCollection<DishMenu> _selectedDish = new();
+
         public MainWindowViewModel(IDishMenuRepository dishMenuRepository, IDialogService dialogService, IServiceProvider serviceProvider)
         {
             _dishMenuRepository = dishMenuRepository;
@@ -37,6 +40,7 @@ namespace KioskSample.ViewModels
             _serviceProvider = serviceProvider;
 
             Categories = _dishMenuRepository.GetAllCategories();
+            
         }
 
         [RelayCommand]
@@ -48,7 +52,19 @@ namespace KioskSample.ViewModels
         [RelayCommand]
         private void Pay()
         {
-            _dialogService.SetVM(_serviceProvider.GetRequiredService<PayDialogViewModel>());
+            SelectedDish.Add(new DishMenu()
+            {
+                Name = "test",
+                Price = new Core.Models.Money(2000, "KRW"),
+                Category = "전체",
+                Id = 99
+            });
+
+            DialogParameters dialogParameters = new DialogParameters();
+
+            dialogParameters.Add("SelectedMenu", SelectedDish);
+
+            _dialogService.SetVM(_serviceProvider.GetRequiredService<PayDialogViewModel>(), dialogParameters);
 
             _dialogService.Dialog.ShowDialog();
         }

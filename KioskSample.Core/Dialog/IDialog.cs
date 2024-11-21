@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KioskSample.Core.Dialog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,10 @@ namespace KioskSample.Core.Services
         bool? ShowDialog();
 
         void Close();
+    }
+
+    public interface IDialogParameters
+    {
+        Dictionary<string, object> Parameters { get; set; }
     }
 }
