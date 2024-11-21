@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using KioskSample.Core.Dialog;
+using KioskSample.Core.ParemeterKeys;
 using KioskSample.Core.Services;
 using KioskSample.Core.ViewModels;
 using KioskSample.Events;
@@ -40,7 +41,23 @@ namespace KioskSample.ViewModels
             _serviceProvider = serviceProvider;
 
             Categories = _dishMenuRepository.GetAllCategories();
-            
+
+            RegisterEvent();
+        }
+
+        private void RegisterEvent()
+        {
+            WeakReferenceMessenger.Default.Register<SelectedDishChanged>(this, (r, m) =>
+            {
+                if(m.Value.IsChecked == true)
+                {
+                    SelectedDish.Add(m.Value);
+                }
+                else
+                {
+                    SelectedDish.Remove(m.Value);
+                }
+            });
         }
 
         [RelayCommand]
@@ -52,17 +69,15 @@ namespace KioskSample.ViewModels
         [RelayCommand]
         private void Pay()
         {
-            SelectedDish.Add(new DishMenu()
+            if (SelectedDish.Count() == 0)
             {
-                Name = "test",
-                Price = new Core.Models.Money(2000, "KRW"),
-                Category = "전체",
-                Id = 99
-            });
+                //TODO : 선택필요 다이얼로그
+                return;
+            }
 
             DialogParameters dialogParameters = new DialogParameters();
 
-            dialogParameters.Add("SelectedMenu", SelectedDish);
+            dialogParameters.Add(ParameterKeys.SelectedDishes, SelectedDish);
 
             _dialogService.ShowDialog<PayDialogViewModel>(dialogParameters);
         }

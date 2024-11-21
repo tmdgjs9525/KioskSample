@@ -15,7 +15,7 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <units:DishItem Margin="30,20,30,20"/>
+                    <units:DishItem CommandParameter="{Binding .}" Command="{Binding ButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type units:DishItems}}}" Margin="30,20,30,20"/>
                 </DataTemplate>
             </Setter.Value>
         </Setter>

@@ -16,7 +16,7 @@
         <mainUnits:DishItems HorizontalAlignment="Center" ItemsSource="{Binding DishMenus}" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Label Content="PayDialogView" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="{Binding TotalPrice}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button Content="Next" Command="{Binding NextCommand}" Width="150" Height="50"/>
         </StackPanel>
     </Grid>

@@ -1,12 +1,16 @@
-﻿using KioskSample.Core.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using KioskSample.Core.Models;
 
 namespace KioskSample.Models
 {
-    public class DishMenu
+    public partial class DishMenu : ObservableObject
     {
         private static readonly Money Zero_Money = new Money(0, "KRW");
 
         public int Id { get; set; }
+
+        [ObservableProperty]
+        public bool _isChecked;
 
         public string Category { get; set; } = "메인메뉴";
 

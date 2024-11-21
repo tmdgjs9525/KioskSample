@@ -11,6 +11,9 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <mainUnits:DishItems ItemsSource="{Binding DishMenus}"/>
+    <Grid>
+        <mainUnits:DishItems ItemsSource="{Binding DishMenus}" ButtonCommand="{Binding SelectDishCommand}"/>
+
+    </Grid>
 
 </UserControl>

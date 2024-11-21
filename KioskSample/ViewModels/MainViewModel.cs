@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using KioskSample.Core.Models;
 using KioskSample.Core.ViewModels;
@@ -32,6 +33,12 @@ namespace KioskSample.ViewModels
             {
                 DishMenus = new ObservableCollection<DishMenu>(await _dishMenuRepository.GetByCateogryAsync(m.Value));
             });
+        }
+
+        [RelayCommand]
+        private void SelectDish(DishMenu dishMenu)
+        {
+            WeakReferenceMessenger.Default.Send(new SelectedDishChanged(dishMenu));
         }
     }
 }

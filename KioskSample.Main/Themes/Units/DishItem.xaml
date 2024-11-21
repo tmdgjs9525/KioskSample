@@ -6,6 +6,7 @@
     <Style TargetType="{x:Type units:DishItem}">
         <Setter Property="Background" Value="#696773" />
         <Setter Property="Width" Value="150"/>
+        <Setter Property="IsChecked" Value="{Binding IsChecked}"/>
         <Setter Property="Height" Value="150"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Cursor" Value="Hand"/>

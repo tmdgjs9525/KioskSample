@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KioskSample.Core.Dialog;
+using KioskSample.Core.Models;
+using KioskSample.Core.ParemeterKeys;
 using KioskSample.Core.Services;
 using KioskSample.Core.ViewModels;
 using KioskSample.Models;
@@ -17,7 +19,9 @@ namespace KioskSample.ViewModels.Dialog
         public event Action<DialogResult>? RequestClose;
 
         [ObservableProperty]
-        private ObservableCollection<DishMenu>? dishMenus;
+        private ObservableCollection<DishMenu>? _dishMenus;
+        [ObservableProperty]
+        private Money _totalPrice = new Money(0, "KRW");
 
         public PayDialogViewModel(IDialogService dialogService, IServiceProvider serviceProvider)
         {
@@ -34,9 +38,13 @@ namespace KioskSample.ViewModels.Dialog
 
         public void OnDialogOpened(DialogParameters parameters)
         {
-            if (parameters.ContainsKey("SelectedMenu"))
-                DishMenus = parameters.GetValue<ObservableCollection<DishMenu>>("SelectedMenu");
+            if (parameters.ContainsKey(ParameterKeys.SelectedDishes))
+                DishMenus = parameters.GetValue<ObservableCollection<DishMenu>>(ParameterKeys.SelectedDishes);
 
+            foreach (var item in DishMenus!)
+            {
+                TotalPrice += item.Price;
+            }
         }
     }
 }
